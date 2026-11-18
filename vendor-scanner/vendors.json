@@ -1,0 +1,126 @@
+{
+  "_comment": "Vendor signatures are intentionally language-agnostic: import_patterns/class_names use dotted-path style found in most languages, endpoints/env_key_patterns/key_prefixes are plain strings. A future non-Python parser (JS/TS, Go, etc.) can consume this same file.",
+
+  "vendors": [
+    {
+      "name": "OpenAI",
+      "import_patterns": ["openai"],
+      "class_names": ["OpenAI", "AsyncOpenAI"],
+      "endpoints": ["api.openai.com"],
+      "env_key_patterns": ["OPENAI_API_KEY"],
+      "key_prefixes": ["sk-proj-", "sk-"]
+    },
+    {
+      "name": "Azure OpenAI",
+      "import_patterns": ["openai"],
+      "class_names": ["AzureOpenAI", "AsyncAzureOpenAI"],
+      "endpoints": [".openai.azure.com"],
+      "env_key_patterns": ["AZURE_OPENAI_API_KEY", "AZURE_OPENAI_ENDPOINT", "AZURE_OPENAI_KEY"],
+      "key_prefixes": []
+    },
+    {
+      "name": "Anthropic",
+      "import_patterns": ["anthropic"],
+      "class_names": ["Anthropic", "AsyncAnthropic", "AnthropicBedrock", "AnthropicVertex"],
+      "endpoints": ["api.anthropic.com"],
+      "env_key_patterns": ["ANTHROPIC_API_KEY"],
+      "key_prefixes": ["sk-ant-"]
+    },
+    {
+      "name": "Google Gemini",
+      "import_patterns": ["google.generativeai", "google.genai", "genai"],
+      "class_names": ["GenerativeModel"],
+      "endpoints": ["generativelanguage.googleapis.com"],
+      "env_key_patterns": ["GOOGLE_API_KEY", "GEMINI_API_KEY"],
+      "key_prefixes": ["AIzaSy"]
+    },
+    {
+      "name": "Cohere",
+      "import_patterns": ["cohere"],
+      "class_names": ["Client", "ClientV2", "AsyncClient"],
+      "endpoints": ["api.cohere.ai", "api.cohere.com"],
+      "env_key_patterns": ["COHERE_API_KEY"],
+      "key_prefixes": []
+    },
+    {
+      "name": "Mistral",
+      "import_patterns": ["mistralai"],
+      "class_names": ["Mistral", "MistralClient"],
+      "endpoints": ["api.mistral.ai"],
+      "env_key_patterns": ["MISTRAL_API_KEY"],
+      "key_prefixes": []
+    },
+    {
+      "name": "Together AI",
+      "import_patterns": ["together"],
+      "class_names": ["Together"],
+      "endpoints": ["api.together.xyz"],
+      "env_key_patterns": ["TOGETHER_API_KEY"],
+      "key_prefixes": []
+    },
+    {
+      "name": "Groq",
+      "import_patterns": ["groq"],
+      "class_names": ["Groq", "AsyncGroq"],
+      "endpoints": ["api.groq.com"],
+      "env_key_patterns": ["GROQ_API_KEY"],
+      "key_prefixes": []
+    },
+    {
+      "name": "Replicate",
+      "import_patterns": ["replicate"],
+      "class_names": ["Client"],
+      "endpoints": ["api.replicate.com"],
+      "env_key_patterns": ["REPLICATE_API_TOKEN"],
+      "key_prefixes": []
+    },
+    {
+      "name": "Perplexity",
+      "import_patterns": [],
+      "class_names": [],
+      "endpoints": ["api.perplexity.ai"],
+      "env_key_patterns": ["PERPLEXITY_API_KEY"],
+      "key_prefixes": []
+    },
+    {
+      "name": "xAI",
+      "import_patterns": [],
+      "class_names": [],
+      "endpoints": ["api.x.ai"],
+      "env_key_patterns": ["XAI_API_KEY"],
+      "key_prefixes": []
+    },
+    {
+      "name": "Hugging Face Inference API",
+      "import_patterns": ["huggingface_hub"],
+      "class_names": ["InferenceClient"],
+      "endpoints": ["api-inference.huggingface.co", "router.huggingface.co"],
+      "env_key_patterns": ["HF_TOKEN", "HUGGINGFACE_API_KEY", "HUGGINGFACEHUB_API_TOKEN"],
+      "key_prefixes": ["hf_"]
+    },
+    {
+      "name": "AWS Bedrock",
+      "import_patterns": ["boto3"],
+      "class_names": [],
+      "endpoints": ["bedrock-runtime.amazonaws.com", "bedrock.amazonaws.com"],
+      "env_key_patterns": [],
+      "key_prefixes": [],
+      "factory_calls": [
+        {"func": "boto3.client", "service_names": ["bedrock", "bedrock-runtime", "bedrock-agent", "bedrock-agent-runtime"]},
+        {"func": "client", "service_names": ["bedrock", "bedrock-runtime", "bedrock-agent", "bedrock-agent-runtime"]}
+      ]
+    }
+  ],
+
+  "local_allowlist": [
+    {"import_patterns": ["transformers"], "label": "Hugging Face Transformers (local)"},
+    {"import_patterns": ["sentence_transformers"], "label": "Sentence-Transformers (local)"},
+    {"import_patterns": ["llama_cpp"], "label": "llama.cpp (local)"},
+    {"import_patterns": ["ctransformers"], "label": "ctransformers (local)"},
+    {"import_patterns": ["vllm"], "label": "vLLM (local)"},
+    {"import_patterns": ["ollama"], "label": "Ollama (local server)"},
+    {"import_patterns": ["torch", "tensorflow", "jax"], "label": "ML framework (local)"}
+  ],
+
+  "local_host_markers": ["localhost", "127.0.0.1", "0.0.0.0", "::1"]
+}
