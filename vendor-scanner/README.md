@@ -89,3 +89,7 @@ This separation is deliberate for two reasons. First, it means adding a new vend
 When the tool's report includes the actual line of code where a finding occurred (the "snippet"), it never reproduces what looks like a real, complete API key. Before a snippet is written into the on-screen report, the JSON file, or the CSV, the tool checks it against every vendor's known key-prefix patterns (e.g. `sk-`, `sk-ant-`, `AIzaSy`, `hf_`) and, if it finds something key-shaped, replaces the sensitive part with the prefix plus `<REDACTED>` — so a finding like `sk-ant-a1b2c3...` becomes `sk-ant-<REDACTED>` in the output.
 
 This matters because these reports — JSON files, CSV exports, or just pasted terminal output — routinely get committed to case files, emailed, or handed to clients and co-counsel. Without this masking, a security/compliance report could itself become a second place a live credential is stored and circulated. The redaction preserves enough of the key (which vendor it belongs to) for the finding to remain useful, while ensuring the report itself is never a leak vector.
+
+## How It Was Built
+
+I built this in Python with AI coding assistance (Claude) as part of a six-week AI fluency course. I decided what it should detect and why, tested it, and fixed the problems testing exposed, including a credential leak in its output and vendors being misidentified.
