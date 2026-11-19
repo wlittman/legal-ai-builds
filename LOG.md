@@ -77,3 +77,30 @@ Git saves a dated snapshot of my work every time I commit, with a note saying wh
 
 **In one sentence**
 Today I published a portfolio of my legal AI work from the command line, checking first that nothing private or belonging to someone else went public.
+
+## Week 1, Session 4 (November 19, 2026)
+
+**What I did**
+- Created a branch (add-readmes) and wrote a README for each build in my portfolio.
+- Pushed the branch to GitHub, opened a pull request, reviewed the changes, and merged it into main.
+- Created a GitHub profile introduction using a repository named after my username (wlittman).
+- Added a one-line bio to my GitHub profile and pinned my portfolio.
+
+**What broke, and how I fixed it**
+- In VS Code's Open Folder window, my README file was grayed out. Learned that the window only selects folders, and opened the folder itself.
+- A commit page on GitHub showed my README as raw text. Learned that commit pages show the raw changes, while the normal file view formats the Markdown.
+- Skipped the pull request review at first. Went back and reviewed the merged pull request's "Files changed" tab.
+- Several files had been committed before I saved my edits, including .gitignore, which was empty in the first commit. Found them with git status, checked each with git diff, confirmed no .DS_Store files had been published, fixed a typo (.DS-Store instead of .DS_Store), and committed the saved versions.
+
+**What I learned**
+- A branch is not a folder. It is a separate line of history; Git swaps the files in the same folder to match the branch I am on.
+- A pull request is a proposal to merge changes from a branch into main. It lets a team review a change before it is merged.
+- Reviewing the "Files changed" tab is like reviewing a redline: every addition and deletion is marked, I review it before accepting it, and the history keeps a permanent record.
+- origin is the standard name for a project's GitHub copy. The GitHub tool set it up for me when I created the repository.
+- git push -u links a local branch to its GitHub twin, so later pushes and pulls know where to go.
+- I can stage only some changes by naming specific files with git add, instead of staging everything with git add .
+- Git only sees saved changes. Always save with ⌘S before committing, and watch for the dot on a file's tab.
+- Run git status before every commit. It caught changes I did not know were there.
+
+**In one sentence**
+Today I learned to propose, review, and accept changes the way software teams do, and I gave my GitHub profile a professional introduction.

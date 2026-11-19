@@ -2,7 +2,7 @@
 
 ## Problem
 
-An AI-generated NDA review can sound confident and still miss issues. Without a fixed rubric, judging its quality is laregly subjective and a matter of opinion.
+An AI-generated NDA review can sound confident and still miss issues. Without a fixed rubric, judging its quality can be largely subjective and a matter of opinion.
 
 ## What it is
 
