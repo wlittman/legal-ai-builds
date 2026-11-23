@@ -104,3 +104,20 @@ Today I published a portfolio of my legal AI work from the command line, checkin
 
 **In one sentence**
 Today I learned to propose, review, and accept changes the way software teams do, and I gave my GitHub profile a professional introduction.
+
+## Week 2, Session 1 (November 23, 2026)
+
+- Learned the eight core Python ideas the agent is built from: variables, strings (text), lists, dictionaries, `if`, loops, functions and reading files. Also previewed APIs, tokens, JSON and schemas (a fixed, predictable format for answers).
+- A virtual environment is a private toolbox of packages for one project. It differs from my sandbox, which is a scratch folder for my own practice files: a virtual environment keeps each project's tools separate, while the sandbox keeps my experiments separate.
+- Checked my Python version and installed the current release.
+- Created a separate repository for the Contract Intake Agent, apart from my portfolio.
+- Created and saved `.gitignore` before the first commit, to keep `.env`, `.venv/`, `__pycache__/` and `.DS_Store` off GitHub. Confirmed with `cat .gitignore` and `git status`.
+- Created and activated the virtual environment, and installed the Python extension for VS Code.
+- Wrote my first program, `hello.py`, using variables and an f-string, then committed it and published the repository to GitHub.
+- What broke: nothing unexpected. I broke `hello.py` on purpose by deleting a closing quotation mark, read the `SyntaxError: unterminated string literal` message, and fixed it.
+
+**Questions**
+
+1. A variable is a labeled box that holds a value, like a defined term in a contract. Unlike a defined term, its value can be changed later in the program.
+2. The error message named the problem (an unterminated string literal, meaning text that was opened but never closed) and the line where it happened, so I knew what to fix.
+
