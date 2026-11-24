@@ -121,3 +121,23 @@ Today I learned to propose, review, and accept changes the way software teams do
 1. A variable is a labeled box that holds a value, like a defined term in a contract. Unlike a defined term, its value can be changed later in the program.
 2. The error message named the problem (an unterminated string literal, meaning text that was opened but never closed) and the line where it happened, so I knew what to fix.
 
+## Week 2, Session 2 (November 24, 2026)
+
+- Made a plain-text copy of the Project Falcon NDA with the Mac's `textutil` tool, so Python could read it.
+- Built `nda_basics.py` in four parts, running and checking each part before adding the next:
+  - Part A: read the NDA from a file and counted its words (2,334).
+  - Part B: checked for five key terms using a list, a loop, and `if`/`else`.
+  - Part C: stored the results in a dictionary, pairing each term with True or False.
+  - Part D: packaged the check as a reusable function, `check_terms`, and confirmed it gives the same result as Part C.
+- Added comments to `nda_basics.py` and `hello.py` explaining each section in my own words, then committed and pushed.
+- What I learned about word matching:
+  - False negative: the check reported "return or destroy" as not found, but the NDA has a Return and Destruction clause worded differently ("return to the Disclosing Party or destroy").
+  - False positive: "term" was reported as found, but those letters appear inside many words ("terms," "determine," "terminate"), so the result proves little.
+  - Word matching sees letters, not meaning. It cannot reliably find clauses, and it cannot judge whether a clause meets my playbook. That is why Session 4 uses Claude.
+
+**Questions**
+
+1. A list is an ordered collection of items in square brackets, such as `["confidential", "residuals"]`. A dictionary pairs labels with values in curly braces, such as `{"confidential": True}`, like a filled-in form.
+2. Indentation shows which lines belong to the line above, such as the steps inside a loop or an `if`. Python requires it, so wrong indentation causes an error.
+3. I predicted "return or destroy" would be found, because the NDA has a Return and Destruction clause. It was a false negative: the clause uses different wording, so the exact-phrase check missed it.
+
