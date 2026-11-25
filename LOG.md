@@ -141,3 +141,20 @@ Today I learned to propose, review, and accept changes the way software teams do
 2. Indentation shows which lines belong to the line above, such as the steps inside a loop or an `if`. Python requires it, so wrong indentation causes an error.
 3. I predicted "return or destroy" would be found, because the NDA has a Return and Destruction clause. It was a false negative: the clause uses different wording, so the exact-phrase check missed it.
 
+## Week 2, Session 3 (November 25, 2026)
+
+- Set up a Claude Console account, added credits, and set a monthly spending limit before creating any key, so the most I can ever be charged is capped.
+- Created an API key, stored it in `.env` on my Mac only, and confirmed with `git status` that Git ignores it.
+- Installed two packages with `pip`: `anthropic` (to talk to Claude) and `python-dotenv` (to read `.env`). `pip` also installed 15 dependencies. Recorded everything in `requirements.txt`.
+- Wrote `first_call.py`, which sends the Project Falcon NDA to Claude (`claude-haiku-5-5`) and prints a summary and the tokens used.
+- What broke, and what I learned:
+  - The key: I shared a screenshot that showed my API key. I deleted the key in the Console right away and created a new one with a 90-day expiry. Revoking first is what makes a leaked key useless.
+  - `max_tokens`: with a cap of 500, Claude used the whole budget before writing anything, so no summary printed at all, with no error. Printing `stop_reason` showed `max_tokens`. Raising the cap to 2,000 fixed it (`end_turn`). A program can look like it worked and still give an incomplete answer.
+  - Readability: Claude returned one long paragraph. The instruction controls the format, so asking for bullet points would change the layout.
+- Read the summary as a lawyer: accurate on term, no-hire, portfolio-company bar, residuals, governing law and one-sided assignment, but it left out the Return and Destruction clause. That is fine for a business summary, not for a legal review.
+
+**Questions**
+
+1. An API is a set of rules for one program to ask another for something. In the restaurant comparison, my program is the customer, the API is the waiter carrying the order, and Anthropic's servers running Claude are the kitchen. The API key is like my account card: it proves who I am and who pays.
+2. The key lives only in `.env`, which `.gitignore` keeps off GitHub. `load_dotenv()` reads `.env`, and the Anthropic package finds the key by its name, `ANTHROPIC_API_KEY`, so the key never appears in my code.
+3. One NDA summary cost about a tenth of a cent (4,911 tokens in, 898 out, at $0.10 and $0.50 per million). Twenty would cost about two cents. Output tokens cost five times as much as input, so long answers drive the cost.
